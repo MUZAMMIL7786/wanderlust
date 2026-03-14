@@ -1160,7 +1160,7 @@
         init();
     </script>
 
-    <script type="text/javascript">
+<script type="text/javascript">
   (function(d, t) {
       var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
       v.onload = function() {
@@ -1171,10 +1171,14 @@
           voice: {
             url: "https://runtime-api.voiceflow.com"
           }
+        }).then(() => {
+          // This line triggers the auto-open
+          window.voiceflow.chat.open();
         });
       }
       v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
   })(document, 'script');
 </script>
+
 </body>
 </html>
