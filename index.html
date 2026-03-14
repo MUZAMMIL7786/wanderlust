@@ -240,6 +240,7 @@
             height: 200px;
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
             position: relative;
             overflow: hidden;
         }
@@ -249,6 +250,7 @@
             position: absolute;
             inset: 0;
             background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
         }
 
         .wishlist-btn {
@@ -288,6 +290,7 @@
             border-radius: 9999px;
             font-size: 0.9rem;
             font-weight: 600;
+            z-index: 5;
         }
 
         .package-content {
@@ -370,6 +373,7 @@
             height: 300px;
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
         }
 
         .modal-header::before {
@@ -766,7 +770,6 @@
     </footer>
 
     <script>
-        // Complete Package Data with Details
         const packages = [
             {
                 id: 1,
@@ -778,16 +781,16 @@
                 rating: 4.8,
                 reviews: 320,
                 image: 'https://images.unsplash.com/photo-1537521191519-c1e2dd1c1535?w=800&h=600&fit=crop',
-                overview: 'Discover the magical island of Bali with its pristine beaches, ancient temples, and vibrant culture. Experience the perfect blend of relaxation and adventure.',
+                overview: 'Discover the magical island of Bali with its pristine beaches, ancient temples, and vibrant culture.',
                 highlights: ['Bali Temples', 'Beach Resorts', 'Rice Terraces', 'Water Sports', 'Spa & Wellness', 'Local Culture'],
                 itinerary: [
-                    { day: 1, title: 'Arrival in Bali', description: 'Arrive at Denpasar Airport, transfer to hotel, relax and acclimatize.' },
-                    { day: 2, title: 'Temple Tour', description: 'Visit Tanah Lot and Ubud Palace, experience local culture and traditions.' },
-                    { day: 3, title: 'Beach Day', description: 'Enjoy water sports at Seminyak Beach, sunset dinner by the sea.' },
-                    { day: 4, title: 'Adventure', description: 'Mount Batur sunrise trek and hot springs visit.' },
-                    { day: 5, title: 'Departure', description: 'Spa & wellness session, transfer to airport.' }
+                    { day: 1, title: 'Arrival in Bali', description: 'Arrive at Denpasar Airport, transfer to hotel.' },
+                    { day: 2, title: 'Temple Tour', description: 'Visit Tanah Lot and Ubud Palace.' },
+                    { day: 3, title: 'Beach Day', description: 'Enjoy water sports at Seminyak Beach.' },
+                    { day: 4, title: 'Adventure', description: 'Mount Batur sunrise trek.' },
+                    { day: 5, title: 'Departure', description: 'Spa session, transfer to airport.' }
                 ],
-                includes: ['Hotel Accommodation', 'Daily Breakfast', 'Airport Transfers', 'Guided Tours', 'Travel Insurance', 'Meals & Activities']
+                includes: ['Hotel Accommodation', 'Daily Breakfast', 'Airport Transfers', 'Guided Tours', 'Travel Insurance', 'Meals']
             },
             {
                 id: 2,
@@ -799,15 +802,15 @@
                 rating: 4.9,
                 reviews: 280,
                 image: 'https://images.unsplash.com/photo-1540959375944-7049f642e9f1?w=800&h=600&fit=crop',
-                overview: 'Experience the vibrant energy of Tokyo, where ancient traditions meet cutting-edge technology. From neon-lit streets to serene temples.',
+                overview: 'Experience the vibrant energy of Tokyo where ancient traditions meet cutting-edge technology.',
                 highlights: ['Shibuya Crossing', 'Senso-ji Temple', 'Tokyo Tower', 'Tsukiji Market', 'Karaoke', 'Anime District'],
                 itinerary: [
-                    { day: 1, title: 'Tokyo Arrival', description: 'Arrive at Narita Airport, check-in to hotel in Shinjuku.' },
-                    { day: 2, title: 'Central Tokyo', description: 'Explore Shibuya, Shinjuku, and Ginza districts.' },
-                    { day: 3, title: 'Cultural Tour', description: 'Visit Senso-ji Temple, Meiji Shrine, and traditional gardens.' },
-                    { day: 4, title: 'Modern Tokyo', description: 'Tokyo Tower, shopping at Takeshita Street.' },
-                    { day: 5, title: 'Day Trip', description: 'Visit Mount Fuji or Nikki National Park.' },
-                    { day: 6, title: 'Departure', description: 'Last-minute shopping, transfer to airport.' }
+                    { day: 1, title: 'Tokyo Arrival', description: 'Arrive at Narita Airport, check-in to hotel.' },
+                    { day: 2, title: 'Central Tokyo', description: 'Explore Shibuya, Shinjuku districts.' },
+                    { day: 3, title: 'Cultural Tour', description: 'Visit Senso-ji Temple and Meiji Shrine.' },
+                    { day: 4, title: 'Modern Tokyo', description: 'Tokyo Tower and shopping.' },
+                    { day: 5, title: 'Day Trip', description: 'Visit Mount Fuji.' },
+                    { day: 6, title: 'Departure', description: 'Last shopping, transfer to airport.' }
                 ],
                 includes: ['Hotel Stay', 'JR Pass', 'Guided Tours', 'Meals', 'Entry Fees', 'Transport']
             },
@@ -820,16 +823,16 @@
                 category: 'mountain',
                 rating: 4.7,
                 reviews: 415,
-                image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop',
-                overview: 'Adventure awaits in the Swiss Alps. Experience breathtaking mountain scenery, thrilling outdoor activities, and charming alpine villages.',
+                image: 'https://images.unsplash.com/photo-1531366936337-7bc8a0374e42?w=800&h=600&fit=crop',
+                overview: 'Adventure awaits in the Swiss Alps with breathtaking mountain scenery and thrilling outdoor activities.',
                 highlights: ['Interlaken', 'Jungfrau Mountain', 'Hiking Trails', 'Paragliding', 'Swiss Cuisine', 'Mountain Railways'],
                 itinerary: [
-                    { day: 1, title: 'Arrive in Interlaken', description: 'Settle into mountain resort, orientation tour.' },
-                    { day: 2, title: 'Jungfrau Trek', description: 'Cable car to Jungfrau, explore snowy peaks.' },
-                    { day: 3, title: 'Adventure Sports', description: 'Paragliding or skydiving experience.' },
+                    { day: 1, title: 'Arrive in Interlaken', description: 'Settle into mountain resort.' },
+                    { day: 2, title: 'Jungfrau Trek', description: 'Cable car to Jungfrau peaks.' },
+                    { day: 3, title: 'Adventure Sports', description: 'Paragliding experience.' },
                     { day: 4, title: 'Hiking Day', description: 'Guided hiking through Alpine meadows.' },
-                    { day: 5, title: 'Mountain Train', description: 'Scenic train ride through mountain passes.' },
-                    { day: 6, title: 'Relaxation', description: 'Spa treatments, local cheese fondue dinner.' },
+                    { day: 5, title: 'Mountain Train', description: 'Scenic train ride.' },
+                    { day: 6, title: 'Relaxation', description: 'Spa treatments and fondue dinner.' },
                     { day: 7, title: 'Departure', description: 'Transfer to airport.' }
                 ],
                 includes: ['Mountain Resort', 'All Activities', 'Meals', 'Equipment', 'Guides', 'Insurance']
@@ -844,13 +847,13 @@
                 rating: 4.9,
                 reviews: 567,
                 image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&h=600&fit=crop',
-                overview: 'Fall in love with the City of Light. Romantic walks along the Seine, world-class museums, and exquisite French cuisine await.',
+                overview: 'Fall in love with the City of Light with romantic walks and world-class museums.',
                 highlights: ['Eiffel Tower', 'Louvre Museum', 'Arc de Triomphe', 'Seine Cruise', 'Michelin Dining', 'Montmartre'],
                 itinerary: [
                     { day: 1, title: 'Paris Arrival', description: 'Welcome to Paris, settle in hotel.' },
-                    { day: 2, title: 'Iconic Sites', description: 'Eiffel Tower, Champs-Élysées, Arc de Triomphe.' },
-                    { day: 3, title: 'Museums & Culture', description: 'Louvre, Musée d\'Orsay, Notre-Dame.' },
-                    { day: 4, title: 'Romantic Paris', description: 'Seine River cruise, Montmartre, farewell dinner.' }
+                    { day: 2, title: 'Iconic Sites', description: 'Eiffel Tower and Champs-Élysées.' },
+                    { day: 3, title: 'Museums', description: 'Louvre and Musée d\'Orsay.' },
+                    { day: 4, title: 'Romantic Paris', description: 'Seine cruise and farewell dinner.' }
                 ],
                 includes: ['Hotel Stay', 'Museum Passes', 'Seine Cruise', 'Meals', 'Transport', 'Guides']
             },
@@ -863,15 +866,15 @@
                 category: 'beach',
                 rating: 4.6,
                 reviews: 292,
-                image: 'https://images.unsplash.com/photo-1552520206-7fce8fa7f338?w=800&h=600&fit=crop',
-                overview: 'Relax on pristine beaches, explore coral reefs, and indulge in Thai hospitality. Phuket offers the perfect tropical getaway.',
+                image: 'https://images.unsplash.com/photo-1522644514-116fdf86fa40?w=800&h=600&fit=crop',
+                overview: 'Relax on pristine beaches, explore coral reefs, and indulge in Thai hospitality.',
                 highlights: ['Patong Beach', 'Island Hopping', 'Snorkeling', 'Thai Massage', 'Night Markets', 'Temples'],
                 itinerary: [
-                    { day: 1, title: 'Beach Arrival', description: 'Check-in to beachfront resort, settle in.' },
-                    { day: 2, title: 'Island Adventure', description: 'Boat tour to nearby islands, snorkeling.' },
-                    { day: 3, title: 'Beach Relaxation', description: 'Spa day, beach sunset, Thai dinner.' },
-                    { day: 4, title: 'Local Culture', description: 'Temple visit, night bazaar, local cuisine.' },
-                    { day: 5, title: 'Departure', description: 'Last beach time, transfer to airport.' }
+                    { day: 1, title: 'Beach Arrival', description: 'Check-in to beachfront resort.' },
+                    { day: 2, title: 'Island Adventure', description: 'Boat tour to nearby islands.' },
+                    { day: 3, title: 'Beach Relaxation', description: 'Spa day and sunset dinner.' },
+                    { day: 4, title: 'Local Culture', description: 'Temple visit and night bazaar.' },
+                    { day: 5, title: 'Departure', description: 'Transfer to airport.' }
                 ],
                 includes: ['Resort Stay', 'Meals', 'Island Tours', 'Spa', 'Transport', 'Activities']
             },
@@ -885,14 +888,14 @@
                 rating: 4.8,
                 reviews: 401,
                 image: 'https://images.unsplash.com/photo-1512453314636-ef33a7a1a5f9?w=800&h=600&fit=crop',
-                overview: 'Experience ultra-modern luxury in Dubai. Iconic skyscrapers, world-class shopping, and desert adventures combine for an unforgettable stay.',
+                overview: 'Experience ultra-modern luxury with iconic skyscrapers and world-class shopping.',
                 highlights: ['Burj Khalifa', 'Dubai Mall', 'Desert Safari', 'Palm Jumeirah', 'Gold Souk', 'Luxury Dining'],
                 itinerary: [
-                    { day: 1, title: 'Dubai Welcome', description: 'Luxury hotel check-in, city orientation.' },
-                    { day: 2, title: 'Modern Dubai', description: 'Burj Khalifa, Dubai Mall, shopping.' },
-                    { day: 3, title: 'Desert Adventure', description: 'Desert safari, dune bashing, camel ride.' },
-                    { day: 4, title: 'Beach & Water', description: 'Palm Jumeirah, water sports, yacht dinner.' },
-                    { day: 5, title: 'Departure', description: 'Spa, last shopping, airport transfer.' }
+                    { day: 1, title: 'Dubai Welcome', description: 'Luxury hotel check-in.' },
+                    { day: 2, title: 'Modern Dubai', description: 'Burj Khalifa and Dubai Mall.' },
+                    { day: 3, title: 'Desert Adventure', description: 'Desert safari and dune bashing.' },
+                    { day: 4, title: 'Beach & Water', description: 'Palm Jumeirah and yacht dinner.' },
+                    { day: 5, title: 'Departure', description: 'Spa and airport transfer.' }
                 ],
                 includes: ['Luxury Hotel', 'All Meals', 'Safari Tour', 'Water Activities', 'Shopping', 'Transport']
             },
@@ -905,15 +908,15 @@
                 category: 'mountain',
                 rating: 4.7,
                 reviews: 189,
-                image: 'https://images.unsplash.com/photo-1489749798305-4fea3ba63d60?w=800&h=600&fit=crop',
-                overview: 'Escape to the serene Himalayas. Mountain treks, adventure sports, and spiritual peace await in this stunning hill station.',
+                image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop',
+                overview: 'Escape to the serene Himalayas with mountain treks and spiritual peace.',
                 highlights: ['Mountain Treks', 'Adventure Sports', 'Spiritual Temples', 'Rohtang Pass', 'Local Culture', 'Natural Beauty'],
                 itinerary: [
-                    { day: 1, title: 'Manali Arrival', description: 'Arrive in mountain town, rest and acclimatize.' },
-                    { day: 2, title: 'Mountain Trek', description: 'Guided hiking through mountain trails.' },
+                    { day: 1, title: 'Manali Arrival', description: 'Arrive in mountain town.' },
+                    { day: 2, title: 'Mountain Trek', description: 'Guided hiking through trails.' },
                     { day: 3, title: 'Adventure Day', description: 'Paragliding or mountain biking.' },
-                    { day: 4, title: 'Cultural Tour', description: 'Temple visits, local village exploration.' },
-                    { day: 5, title: 'Relaxation', description: 'Spa, scenic walks, departure.' }
+                    { day: 4, title: 'Cultural Tour', description: 'Temple visits and village exploration.' },
+                    { day: 5, title: 'Relaxation', description: 'Spa and scenic walks.' }
                 ],
                 includes: ['Mountain Hotel', 'Meals', 'Guides', 'Equipment', 'Transport', 'Activities']
             },
@@ -927,15 +930,15 @@
                 rating: 4.9,
                 reviews: 598,
                 image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop',
-                overview: 'Your perfect honeymoon destination. Crystal-clear waters, overwater bungalows, and ultimate romance in paradise.',
+                overview: 'Your perfect honeymoon destination with crystal-clear waters and overwater bungalows.',
                 highlights: ['Overwater Bungalows', 'Snorkeling', 'Diving', 'Sunset Dinner', 'Spa & Wellness', 'Water Activities'],
                 itinerary: [
-                    { day: 1, title: 'Paradise Arrival', description: 'Seaplane transfer to luxury resort.' },
-                    { day: 2, title: 'Snorkeling Day', description: 'Explore coral reefs and marine life.' },
-                    { day: 3, title: 'Diving Adventure', description: 'Scuba diving in pristine waters.' },
-                    { day: 4, title: 'Romantic Escape', description: 'Private beach dinner, couple\'s massage.' },
-                    { day: 5, title: 'Island Hopping', description: 'Visit local islands and fishing villages.' },
-                    { day: 6, title: 'Departure', description: 'Final moments of paradise, departure.' }
+                    { day: 1, title: 'Paradise Arrival', description: 'Seaplane transfer to resort.' },
+                    { day: 2, title: 'Snorkeling Day', description: 'Explore coral reefs.' },
+                    { day: 3, title: 'Diving Adventure', description: 'Scuba diving experience.' },
+                    { day: 4, title: 'Romantic Escape', description: 'Private beach dinner.' },
+                    { day: 5, title: 'Island Hopping', description: 'Visit local islands.' },
+                    { day: 6, title: 'Departure', description: 'Final moments of paradise.' }
                 ],
                 includes: ['Luxury Resort', 'All Meals', 'Water Sports', 'Spa', 'Seaplane', 'Guides', 'Activities']
             },
@@ -949,13 +952,13 @@
                 rating: 4.8,
                 reviews: 423,
                 image: 'https://images.unsplash.com/photo-1583378292688-d0213dc5d1a9?w=800&h=600&fit=crop',
-                overview: 'Discover the vibrant energy of Barcelona with stunning architecture, delicious food, and Mediterranean charm.',
+                overview: 'Discover vibrant Barcelona with stunning architecture and Mediterranean charm.',
                 highlights: ['Sagrada Familia', 'Park Güell', 'Gothic Quarter', 'Montjuïc', 'Beaches', 'Tapas & Wine'],
                 itinerary: [
-                    { day: 1, title: 'Barcelona Welcome', description: 'Arrive in the city, explore Gothic Quarter.' },
-                    { day: 2, title: 'Gaudí Tour', description: 'Visit Sagrada Familia and Park Güell.' },
-                    { day: 3, title: 'Beach & Culture', description: 'Montjuïc museums, beach time, tapas.' },
-                    { day: 4, title: 'Local Barcelona', description: 'La Rambla, markets, farewell dinner.' }
+                    { day: 1, title: 'Barcelona Welcome', description: 'Arrive and explore Gothic Quarter.' },
+                    { day: 2, title: 'Gaudí Tour', description: 'Sagrada Familia and Park Güell.' },
+                    { day: 3, title: 'Beach & Culture', description: 'Montjuïc museums and beach.' },
+                    { day: 4, title: 'Local Barcelona', description: 'La Rambla and farewell dinner.' }
                 ],
                 includes: ['Hotel Stay', 'Museum Passes', 'Guided Tours', 'Meals', 'Transport', 'Activities']
             },
@@ -969,15 +972,15 @@
                 rating: 4.9,
                 reviews: 356,
                 image: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&h=600&fit=crop',
-                overview: 'Experience Iceland\'s natural wonders - waterfalls, glaciers, hot springs, and the magical Northern Lights.',
+                overview: 'Experience Iceland\'s natural wonders with waterfalls, glaciers, and Northern Lights.',
                 highlights: ['Golden Circle', 'Blue Lagoon', 'Waterfalls', 'Glaciers', 'Northern Lights', 'Hot Springs'],
                 itinerary: [
-                    { day: 1, title: 'Reykjavik Arrival', description: 'Welcome to Iceland, city exploration.' },
-                    { day: 2, title: 'Golden Circle', description: 'Þingvellir, Geysir, Gullfoss waterfall.' },
-                    { day: 3, title: 'South Coast', description: 'Waterfalls, black sand beaches, glacier.' },
-                    { day: 4, title: 'Blue Lagoon', description: 'Geothermal spa, relaxation.' },
-                    { day: 5, title: 'Northern Lights', description: 'Hunt for Aurora Borealis.' },
-                    { day: 6, title: 'Departure', description: 'Final adventures, return to Reykjavik.' }
+                    { day: 1, title: 'Reykjavik Arrival', description: 'Explore the city.' },
+                    { day: 2, title: 'Golden Circle', description: 'Visit Þingvellir and Geysir.' },
+                    { day: 3, title: 'South Coast', description: 'Waterfalls and glaciers.' },
+                    { day: 4, title: 'Blue Lagoon', description: 'Geothermal spa relaxation.' },
+                    { day: 5, title: 'Northern Lights', description: 'Hunt for Aurora.' },
+                    { day: 6, title: 'Departure', description: 'Return to Reykjavik.' }
                 ],
                 includes: ['Hotel Stay', 'Guided Tours', 'Blue Lagoon', 'All Meals', 'Transport', 'Equipment']
             },
@@ -991,16 +994,16 @@
                 rating: 4.9,
                 reviews: 289,
                 image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&h=600&fit=crop',
-                overview: 'Adventure paradise awaits. Bungee jumping, hiking, scenic drives, and stunning landscapes in Middle Earth.',
+                overview: 'Adventure paradise with bungee jumping, hiking, and stunning landscapes.',
                 highlights: ['Milford Sound', 'Bungee Jumping', 'Hiking', 'Maori Culture', 'Wine Tours', 'Adventure Sports'],
                 itinerary: [
-                    { day: 1, title: 'Auckland Arrival', description: 'Settle into New Zealand, city tour.' },
-                    { day: 2, title: 'Adventure Sports', description: 'Bungee jumping, jet boating.' },
+                    { day: 1, title: 'Auckland Arrival', description: 'Settle in and city tour.' },
+                    { day: 2, title: 'Adventure Sports', description: 'Bungee jumping and jet boating.' },
                     { day: 3, title: 'Queenstown', description: 'Adventure capital exploration.' },
-                    { day: 4, title: 'Milford Sound', description: 'Scenic cruise through fjords.' },
-                    { day: 5, title: 'Hiking Day', description: 'Guided walk through beautiful trails.' },
-                    { day: 6, title: 'Wine Country', description: 'Vineyard tours and tastings.' },
-                    { day: 7, title: 'Departure', description: 'Final adventure, return flight.' }
+                    { day: 4, title: 'Milford Sound', description: 'Scenic fjord cruise.' },
+                    { day: 5, title: 'Hiking Day', description: 'Beautiful trail walk.' },
+                    { day: 6, title: 'Wine Country', description: 'Vineyard tours.' },
+                    { day: 7, title: 'Departure', description: 'Return flight.' }
                 ],
                 includes: ['Adventure Resort', 'All Activities', 'Meals', 'Equipment', 'Guides', 'Tours', 'Transport']
             },
@@ -1014,14 +1017,14 @@
                 rating: 4.8,
                 reviews: 512,
                 image: 'https://images.unsplash.com/photo-1516542587304-e5a5f77cf65d?w=800&h=600&fit=crop',
-                overview: 'Island hop through the Greek islands. Whitewashed villages, blue domes, crystal waters, and Mediterranean sunsets.',
+                overview: 'Island hop through Greek islands with whitewashed villages and Mediterranean sunsets.',
                 highlights: ['Santorini Sunset', 'Mykonos Nightlife', 'Delphi', 'Beach Clubs', 'Greek Cuisine', 'Yacht Cruise'],
                 itinerary: [
-                    { day: 1, title: 'Santorini Arrival', description: 'Settle in iconic white village.' },
-                    { day: 2, title: 'Island Exploration', description: 'Oia sunset, caldera views.' },
-                    { day: 3, title: 'Mykonos Party', description: 'Ferry to Mykonos, nightlife.' },
-                    { day: 4, title: 'Delphi & Ruins', description: 'Ancient Greek site tour.' },
-                    { day: 5, title: 'Final Day', description: 'Yacht cruise, departure.' }
+                    { day: 1, title: 'Santorini Arrival', description: 'Settle in white village.' },
+                    { day: 2, title: 'Island Exploration', description: 'Oia sunset and caldera views.' },
+                    { day: 3, title: 'Mykonos Party', description: 'Ferry and nightlife.' },
+                    { day: 4, title: 'Delphi & Ruins', description: 'Ancient site tour.' },
+                    { day: 5, title: 'Final Day', description: 'Yacht cruise and departure.' }
                 ],
                 includes: ['Island Hotel', 'Ferry Passes', 'Yacht Cruise', 'All Meals', 'Guided Tours', 'Activities']
             }
@@ -1126,7 +1129,7 @@
         }
 
         function inquirePackage() {
-            showToast(`Inquiry sent for ${currentPackage.name}! We'll contact you soon.`);
+            showToast(`Inquiry sent for ${currentPackage.name}!`);
             setTimeout(() => closeModal(), 1500);
         }
 
