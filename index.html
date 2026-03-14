@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust Travels - Explore Your Next Adventure</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #06b6d4;
+            --primary-dark: #0891b2;
+            --secondary: #3b82f6;
+            --secondary-dark: #1d4ed8;
+            --bg-dark: #000000;
+            --bg-card: #0f0f0f;
+            --border: rgba(255, 255, 255, 0.1);
+            --text-primary: #ffffff;
+            --text-secondary: #9ca3af;
+            --accent: #8b5cf6;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            padding: 0.5rem 0;
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.1);
+        }
+
+        nav .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+
+        nav .menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            flex-direction: column;
+            width: 100%;
+            gap: 0;
+            border-top: 1px solid var(--border);
+        }
+
+        nav .menu.active {
+            display: flex;
+        }
+
+        nav .menu a {
+            padding: 1rem 2rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav .menu a:hover {
+            color: var(--text-primary);
+            background: rgba(6, 182, 212, 0.1);
+        }
+
+        nav .nav-links {
+            display: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        nav .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-book {
+            padding: 0.6rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #000;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: none;
+        }
+
+        .btn-book:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+        }
+
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+            color: white;
+        }
+
+        .menu-toggle span {
+            width: 1.5rem;
+            height: 2px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translateY(10px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translateY(-10px);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 5rem;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.9) 100%), 
+                        url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&h=800&fit=crop') center/cover;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+            z-index: 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+            z-index: 0;
+        }
+
+        .hero .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 8vw, 4rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero h1 span {
+            color: var(--text-primary);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .search-bar {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+        }
+
+        /* Categories Section */
+        .categories {
+            max-width: 1280px;
+            margin: -2rem auto 4rem;
+            padding: 0 2rem;
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+        }
+
+        .categories::-webkit-scrollbar {
+            display: none;
+        }
+
+        .category-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .category-btn:hover {
+            border-color: var(--primary);
+            color: var(--text-primary);
+        }
+
+        .category-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-color: var(--primary);
+            color: #000;
+        }
+
+        /* Packages Section */
+        .packages {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .packages h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .package-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .package-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.2);
+        }
+
+        .package-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.3);
+            transition: background 0.3s ease;
+        }
+
+        .package-card:hover .package-image::before {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .wishlist-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+            font-size: 1.2rem;
+        }
+
+        .wishlist-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .wishlist-btn.active {
+            background: rgba(239, 68, 68, 0.3);
+            color: #ef4444;
+        }
+
+        .rating-badge {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .package-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .package-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .package-card:hover .package-content h3 {
+            color: var(--primary);
+        }
+
+        .package-location {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .package-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            margin-top: auto;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .package-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #000;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .package-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+        }
+
+        .no-packages {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            grid-column: 1 / -1;
+        }
+
+        /* Stats Section */
+        .stats {
+            max-width: 1280px;
+            margin: 4rem auto;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            color: var(--text-secondary);
+        }
+
+        /* CTA Section */
+        .cta {
+            max-width: 1280px;
+            margin: 4rem auto;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(59, 130, 246, 0.1));
+            border: 1px solid var(--border);
+            border-radius: 1.5rem;
+            text-align: left;
+        }
+
+        .cta h2 {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .cta-form {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-form input {
+            flex: 1;
+            min-width: 250px;
+            padding: 0.75rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .cta-form input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .cta-form button {
+            padding: 0.75rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #000;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-form button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
+            padding: 3rem 2rem;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        footer .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .package-card {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #000;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            animation: slideInUp 0.3s ease-out;
+            z-index: 2000;
+            max-width: 300px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav .nav-links {
+                display: none;
+            }
+
+            .btn-book {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .search-bar {
+                flex-direction: column;
+            }
+
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-form {
+                flex-direction: column;
+            }
+
+            .cta-form input,
+            .cta-form button {
+                width: 100%;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (min-width: 769px) {
+            nav .nav-links {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: none;
+            }
+
+            nav .menu {
+                position: static !important;
+                flex-direction: row;
+                width: auto;
+                gap: 2rem;
+                border: none;
+                background: none;
+            }
+
+            nav .menu a {
+                padding: 0;
+                border: none;
+                color: var(--text-secondary);
+            }
+
+            .btn-book {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">
+                <div class="logo-img">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <span class="logo-text">WANDERLUST</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="#packages">Packages</a>
+                <a href="#categories">Categories</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn-book" onclick="bookNow()">Book Now</button>
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="menu" id="navMenu">
+            <a href="#packages">Packages</a>
+            <a href="#categories">Categories</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Explore Your <span>Next Adventure</span></h1>
+                <p>Discover curated travel packages to the world's most breathtaking destinations. Start your journey today.</p>
+                
+                <div class="search-bar">
+                    <input 
+                        type="text" 
+                        class="search-input" 
+                        id="searchInput" 
+                        placeholder="Search destinations or packages..."
+                    >
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <div id="categories" class="categories">
+        <button class="category-btn active" onclick="filterByCategory(event, 'all')">All</button>
+        <button class="category-btn" onclick="filterByCategory(event, 'beach')">🏖️ Beach</button>
+        <button class="category-btn" onclick="filterByCategory(event, 'mountain')">⛰️ Mountain</button>
+        <button class="category-btn" onclick="filterByCategory(event, 'city')">🏙️ City</button>
+    </div>
+
+    <!-- Packages Section -->
+    <section class="packages">
+        <h2>Featured Packages</h2>
+        <div class="packages-grid" id="packagesGrid">
+            <!-- Packages will be dynamically loaded here -->
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stat-item">
+            <h3>500+</h3>
+            <p>Destinations</p>
+        </div>
+        <div class="stat-item">
+            <h3>50K+</h3>
+            <p>Happy Travelers</p>
+        </div>
+        <div class="stat-item">
+            <h3>4.8★</h3>
+            <p>Average Rating</p>
+        </div>
+        <div class="stat-item">
+            <h3>24/7</h3>
+            <p>Customer Support</p>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <h2>Need Help Planning Your Trip?</h2>
+        <p>Our travel experts are ready to customize the perfect itinerary for you. Get in touch today!</p>
+        <form class="cta-form" onsubmit="handleCTA(event)">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Get Consultation</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow</h4>
+                    <ul>
+                        <li><a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Wanderlust Travels. All rights reserved.</p>
+                <p>Crafted with <i class="fas fa-heart" style="color: #ef4444;"></i> for travel enthusiasts worldwide</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Package Data with Real Images from Unsplash
+        const packages = [
+            {
+                id: 1,
+                name: 'Exotic Bali Paradise',
+                destination: 'Bali, Indonesia',
+                price: 45999,
+                nights: 5,
+                category: 'beach',
+                rating: 4.8,
+                reviews: 320,
+                image: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=500&h=400&fit=crop'
+            },
+            {
+                id: 2,
+                name: 'Tokyo Dream Adventure',
+                destination: 'Tokyo, Japan',
+                price: 68999,
+                nights: 6,
+                category: 'city',
+                rating: 4.9,
+                reviews: 280,
+                image: 'https://images.unsplash.com/photo-1540959375944-7049f642e9f1?w=500&h=400&fit=crop'
+            },
+            {
+                id: 3,
+                name: 'Swiss Mountain Escape',
+                destination: 'Interlaken, Switzerland',
+                price: 92999,
+                nights: 7,
+                category: 'mountain',
+                rating: 4.7,
+                reviews: 415,
+                image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=400&fit=crop'
+            },
+            {
+                id: 4,
+                name: 'Paris Romance Package',
+                destination: 'Paris, France',
+                price: 55999,
+                nights: 4,
+                category: 'city',
+                rating: 4.9,
+                reviews: 567,
+                image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=500&h=400&fit=crop'
+            },
+            {
+                id: 5,
+                name: 'Thailand Beach Bliss',
+                destination: 'Phuket, Thailand',
+                price: 38999,
+                nights: 5,
+                category: 'beach',
+                rating: 4.6,
+                reviews: 292,
+                image: 'https://images.unsplash.com/photo-1522644514-116fdf86fa40?w=500&h=400&fit=crop'
+            },
+            {
+                id: 6,
+                name: 'Dubai Luxury Tour',
+                destination: 'Dubai, UAE',
+                price: 75999,
+                nights: 5,
+                category: 'city',
+                rating: 4.8,
+                reviews: 401,
+                image: 'https://images.unsplash.com/photo-1512453314636-ef33a7a1a5f9?w=500&h=400&fit=crop'
+            },
+            {
+                id: 7,
+                name: 'Himalayan Retreat',
+                destination: 'Manali, India',
+                price: 28999,
+                nights: 5,
+                category: 'mountain',
+                rating: 4.7,
+                reviews: 189,
+                image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=400&fit=crop'
+            },
+            {
+                id: 8,
+                name: 'Maldives Honeymoon',
+                destination: 'Male, Maldives',
+                price: 85999,
+                nights: 6,
+                category: 'beach',
+                rating: 4.9,
+                reviews: 598,
+                image: 'https://images.unsplash.com/photo-1551244221-5d1d3f34daf8?w=500&h=400&fit=crop'
+            },
+            {
+                id: 9,
+                name: 'Barcelona City Break',
+                destination: 'Barcelona, Spain',
+                price: 52999,
+                nights: 4,
+                category: 'city',
+                rating: 4.8,
+                reviews: 423,
+                image: 'https://images.unsplash.com/photo-1583422409516-2895a77f3df8?w=500&h=400&fit=crop'
+            },
+            {
+                id: 10,
+                name: 'Iceland Adventure',
+                destination: 'Reykjavik, Iceland',
+                price: 78999,
+                nights: 6,
+                category: 'mountain',
+                rating: 4.9,
+                reviews: 356,
+                image: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=500&h=400&fit=crop'
+            },
+            {
+                id: 11,
+                name: 'Bora Bora Paradise',
+                destination: 'Bora Bora, French Polynesia',
+                price: 95999,
+                nights: 7,
+                category: 'beach',
+                rating: 4.9,
+                reviews: 289,
+                image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=500&h=400&fit=crop'
+            },
+            {
+                id: 12,
+                name: 'New York Expedition',
+                destination: 'New York, USA',
+                price: 62999,
+                nights: 5,
+                category: 'city',
+                rating: 4.7,
+                reviews: 512,
+                image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=500&h=400&fit=crop'
+            }
+        ];
+
+        let currentCategory = 'all';
+        let searchTerm = '';
+        let wishlist = new Set();
+
+        // Initialize
+        function init() {
+            renderPackages();
+            setupEventListeners();
+            loadWishlist();
+        }
+
+        // Setup Event Listeners
+        function setupEventListeners() {
+            // Search
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                searchTerm = e.target.value.toLowerCase();
+                renderPackages();
+            });
+
+            // Navigation
+            document.getElementById('menuToggle').addEventListener('click', function() {
+                this.classList.toggle('active');
+                document.getElementById('navMenu').classList.toggle('active');
+            });
+
+            // Navbar scroll effect
+            window.addEventListener('scroll', () => {
+                const nav = document.querySelector('nav');
+                if (window.scrollY > 50) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+            });
+
+            // Close menu on link click
+            document.querySelectorAll('#navMenu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.getElementById('menuToggle').classList.remove('active');
+                    document.getElementById('navMenu').classList.remove('active');
+                });
+            });
+        }
+
+        // Filter by Category
+        function filterByCategory(event, category) {
+            currentCategory = category;
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            renderPackages();
+        }
+
+        // Filter Packages
+        function getFilteredPackages() {
+            return packages.filter(pkg => {
+                const matchesCategory = currentCategory === 'all' || pkg.category === currentCategory;
+                const matchesSearch = pkg.name.toLowerCase().includes(searchTerm) || 
+                                     pkg.destination.toLowerCase().includes(searchTerm);
+                return matchesCategory && matchesSearch;
+            });
+        }
+
+        // Render Packages
+        function renderPackages() {
+            const filtered = getFilteredPackages();
+            const grid = document.getElementById('packagesGrid');
+            
+            if (filtered.length === 0) {
+                grid.innerHTML = '<div class="no-packages">No packages found matching your criteria.</div>';
+                return;
+            }
+
+            grid.innerHTML = filtered.map(pkg => `
+                <div class="package-card">
+                    <div class="package-image" style="background-image: url('${pkg.image}');">
+                        <button class="wishlist-btn ${wishlist.has(pkg.id) ? 'active' : ''}" 
+                                onclick="toggleWishlist(${pkg.id})">
+                            ${wishlist.has(pkg.id) ? '❤️' : '🤍'}
+                        </button>
+                        <div class="rating-badge">⭐ ${pkg.rating} (${pkg.reviews})</div>
+                    </div>
+                    <div class="package-content">
+                        <h3>${pkg.name}</h3>
+                        <div class="package-location">📍 ${pkg.destination}</div>
+                        <div class="package-details">
+                            <span>🌙 ${pkg.nights} nights</span>
+                            <span>💰 ₹${pkg.price.toLocaleString()}</span>
+                        </div>
+                        <button class="package-btn" onclick="bookPackage(${pkg.id})">Book Package →</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Toggle Wishlist
+        function toggleWishlist(id) {
+            if (wishlist.has(id)) {
+                wishlist.delete(id);
+            } else {
+                wishlist.add(id);
+                showToast('Added to wishlist! 🎉');
+            }
+            saveWishlist();
+            renderPackages();
+        }
+
+        // Save/Load Wishlist
+        function saveWishlist() {
+            localStorage.setItem('wanderlust_wishlist', JSON.stringify([...wishlist]));
+        }
+
+        function loadWishlist() {
+            const saved = localStorage.getItem('wanderlust_wishlist');
+            if (saved) {
+                wishlist = new Set(JSON.parse(saved));
+            }
+        }
+
+        // Book Package
+        function bookPackage(id) {
+            const pkg = packages.find(p => p.id === id);
+            showToast(`Booking ${pkg.name}! Check your email.`);
+        }
+
+        // Book Now Button
+        function bookNow() {
+            showToast('Booking feature coming soon!');
+        }
+
+        // Handle CTA Form
+        function handleCTA(e) {
+            e.preventDefault();
+            const email = e.target.querySelector('input').value;
+            showToast(`Consultation request sent to ${email}!`);
+            e.target.reset();
+        }
+
+        // Show Toast Notification
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        // Start the app
+        init();
+    </script>
+</body>
+</html>
