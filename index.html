@@ -14,15 +14,12 @@
 
         :root {
             --primary: #06b6d4;
-            --primary-dark: #0891b2;
             --secondary: #3b82f6;
-            --secondary-dark: #1d4ed8;
             --bg-dark: #000000;
             --bg-card: #0f0f0f;
             --border: rgba(255, 255, 255, 0.1);
             --text-primary: #ffffff;
             --text-secondary: #9ca3af;
-            --accent: #8b5cf6;
         }
 
         body {
@@ -30,7 +27,6 @@
             background: var(--bg-dark);
             color: var(--text-primary);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
         html {
@@ -43,16 +39,9 @@
             top: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.9);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        nav.scrolled {
-            background: rgba(0, 0, 0, 0.95);
-            padding: 0.5rem 0;
-            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.1);
         }
 
         nav .container {
@@ -91,60 +80,21 @@
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.5px;
-        }
-
-        nav .menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: rgba(0, 0, 0, 0.95);
-            flex-direction: column;
-            width: 100%;
-            gap: 0;
-            border-top: 1px solid var(--border);
-        }
-
-        nav .menu.active {
-            display: flex;
-        }
-
-        nav .menu a {
-            padding: 1rem 2rem;
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid var(--border);
-        }
-
-        nav .menu a:hover {
-            color: var(--text-primary);
-            background: rgba(6, 182, 212, 0.1);
         }
 
         nav .nav-links {
-            display: none;
+            display: flex;
             gap: 2rem;
-            align-items: center;
         }
 
         nav .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
-            transition: all 0.3s ease;
-            font-weight: 500;
+            transition: color 0.3s;
         }
 
         nav .nav-links a:hover {
             color: var(--primary);
-        }
-
-        .nav-buttons {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
         }
 
         .btn-book {
@@ -155,134 +105,51 @@
             border-radius: 0.5rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
-            display: none;
+            transition: all 0.3s;
         }
 
         .btn-book:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
         }
 
-        .menu-toggle {
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-            background: none;
-            border: none;
-            cursor: pointer;
-            z-index: 1001;
-            color: white;
-        }
-
-        .menu-toggle span {
-            width: 1.5rem;
-            height: 2px;
-            background: var(--text-primary);
-            transition: all 0.3s ease;
-        }
-
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translateY(10px);
-        }
-
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translateY(-10px);
-        }
-
-        /* Hero Section */
+        /* Hero */
         .hero {
-            position: relative;
             min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
             padding-top: 5rem;
-            overflow: hidden;
-            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.9) 100%), 
+            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.9)),
                         url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&h=800&fit=crop') center/cover;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            filter: blur(60px);
-            z-index: 0;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            filter: blur(60px);
-            z-index: 0;
         }
 
         .hero .container {
             max-width: 1280px;
             margin: 0 auto;
             padding: 2rem;
-            position: relative;
-            z-index: 1;
         }
 
         .hero-content {
             max-width: 800px;
-            animation: slideInUp 0.8s ease-out;
-        }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .hero h1 {
-            font-size: clamp(2rem, 8vw, 4rem);
+            font-size: 3.5rem;
             font-weight: 900;
-            line-height: 1.1;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero h1 span {
-            color: var(--text-primary);
         }
 
         .hero p {
             font-size: 1.25rem;
             color: var(--text-secondary);
             margin-bottom: 2rem;
-            max-width: 600px;
         }
 
         .search-bar {
             display: flex;
             gap: 0.5rem;
-            margin-bottom: 2rem;
             max-width: 600px;
         }
 
@@ -293,22 +160,15 @@
             border: 1px solid var(--border);
             border-radius: 0.75rem;
             color: var(--text-primary);
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .search-input::placeholder {
-            color: var(--text-secondary);
         }
 
         .search-input:focus {
             outline: none;
             border-color: var(--primary);
             background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
         }
 
-        /* Categories Section */
+        /* Categories */
         .categories {
             max-width: 1280px;
             margin: -2rem auto 4rem;
@@ -316,12 +176,6 @@
             display: flex;
             gap: 1rem;
             overflow-x: auto;
-            scroll-behavior: smooth;
-            scrollbar-width: none;
-        }
-
-        .categories::-webkit-scrollbar {
-            display: none;
         }
 
         .category-btn {
@@ -331,24 +185,19 @@
             color: var(--text-secondary);
             border-radius: 9999px;
             cursor: pointer;
-            transition: all 0.3s ease;
             white-space: nowrap;
             font-weight: 600;
-            font-size: 0.95rem;
+            transition: all 0.3s;
         }
 
-        .category-btn:hover {
-            border-color: var(--primary);
-            color: var(--text-primary);
-        }
-
+        .category-btn:hover,
         .category-btn.active {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             border-color: var(--primary);
             color: #000;
         }
 
-        /* Packages Section */
+        /* Packages */
         .packages {
             max-width: 1280px;
             margin: 0 auto;
@@ -362,7 +211,6 @@
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
         .packages-grid {
@@ -376,8 +224,8 @@
             border: 1px solid var(--border);
             border-radius: 1rem;
             overflow: hidden;
-            transition: all 0.3s ease;
             cursor: pointer;
+            transition: all 0.3s;
             display: flex;
             flex-direction: column;
         }
@@ -401,11 +249,6 @@
             position: absolute;
             inset: 0;
             background: rgba(0, 0, 0, 0.3);
-            transition: background 0.3s ease;
-        }
-
-        .package-card:hover .package-image::before {
-            background: rgba(0, 0, 0, 0.1);
         }
 
         .wishlist-btn {
@@ -422,9 +265,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
             z-index: 10;
             font-size: 1.2rem;
+            transition: all 0.3s;
         }
 
         .wishlist-btn:hover {
@@ -441,7 +284,6 @@
             bottom: 1rem;
             left: 1rem;
             background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(10px);
             padding: 0.5rem 1rem;
             border-radius: 9999px;
             font-size: 0.9rem;
@@ -458,7 +300,7 @@
         .package-content h3 {
             font-size: 1.25rem;
             margin-bottom: 0.5rem;
-            transition: color 0.3s ease;
+            transition: color 0.3s;
         }
 
         .package-card:hover .package-content h3 {
@@ -467,17 +309,12 @@
 
         .package-location {
             color: var(--text-secondary);
-            font-size: 0.95rem;
             margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
 
         .package-details {
             display: flex;
             justify-content: space-between;
-            align-items: center;
             padding-top: 1rem;
             margin-top: auto;
             border-top: 1px solid var(--border);
@@ -494,106 +331,201 @@
             border-radius: 0.5rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
             margin-top: 1rem;
+            transition: all 0.3s;
         }
 
         .package-btn:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
         }
 
-        .no-packages {
-            text-align: center;
-            padding: 3rem;
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            grid-column: 1 / -1;
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            overflow-y: auto;
         }
 
-        /* Stats Section */
-        .stats {
-            max-width: 1280px;
-            margin: 4rem auto;
-            padding: 4rem 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            text-align: center;
+        .modal.active {
+            display: block;
         }
 
-        .stat-item h3 {
-            font-size: 2rem;
+        .modal-content {
+            background: var(--bg-dark);
+            max-width: 1000px;
+            margin: 2rem auto;
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .modal-header {
+            position: relative;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .modal-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent, var(--bg-dark));
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            width: 3rem;
+            height: 3rem;
+            background: rgba(0, 0, 0, 0.6);
+            border: none;
+            color: white;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .close-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-body {
+            padding: 3rem 2rem;
+        }
+
+        .package-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
+        }
+
+        .package-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: rgba(6, 182, 212, 0.1);
+            border-radius: 1rem;
+            border: 1px solid var(--border);
+        }
+
+        .meta-item {
+            text-align: center;
+        }
+
+        .meta-item .value {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .meta-item .label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .section {
+            margin: 3rem 0;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .section-content {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .itinerary-day {
+            background: rgba(6, 182, 212, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .itinerary-day strong {
+            color: var(--primary);
+            display: block;
             margin-bottom: 0.5rem;
         }
 
-        .stat-item p {
-            color: var(--text-secondary);
+        .highlights-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
         }
 
-        /* CTA Section */
-        .cta {
-            max-width: 1280px;
-            margin: 4rem auto;
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(59, 130, 246, 0.1));
+        .highlight-item {
+            background: var(--bg-card);
+            padding: 1rem;
+            border-radius: 0.5rem;
             border: 1px solid var(--border);
-            border-radius: 1.5rem;
-            text-align: left;
         }
 
-        .cta h2 {
-            font-size: 2rem;
-            font-weight: 900;
-            margin-bottom: 1rem;
+        .highlight-item strong {
+            color: var(--primary);
         }
 
-        .cta p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-        }
-
-        .cta-form {
+        .cta-buttons {
             display: flex;
             gap: 1rem;
+            margin-top: 2rem;
             flex-wrap: wrap;
         }
 
-        .cta-form input {
+        .cta-buttons button {
             flex: 1;
-            min-width: 250px;
-            padding: 0.75rem 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid var(--border);
-            border-radius: 0.5rem;
-            color: var(--text-primary);
-            font-size: 1rem;
-        }
-
-        .cta-form input::placeholder {
-            color: var(--text-secondary);
-        }
-
-        .cta-form button {
-            padding: 0.75rem 2rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: #000;
+            min-width: 150px;
+            padding: 1rem;
             border: none;
             border-radius: 0.5rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
         }
 
-        .cta-form button:hover {
+        .btn-book-now {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #000;
+        }
+
+        .btn-book-now:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+        }
+
+        .btn-inquire {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-inquire:hover {
+            background: rgba(6, 182, 212, 0.1);
         }
 
         /* Footer */
@@ -617,22 +549,14 @@
         }
 
         .footer-section h4 {
-            font-weight: 600;
             margin-bottom: 1rem;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 0.5rem;
         }
 
         .footer-section a {
             color: var(--text-secondary);
             text-decoration: none;
-            transition: color 0.3s ease;
+            display: block;
+            margin-bottom: 0.5rem;
         }
 
         .footer-section a:hover {
@@ -642,30 +566,11 @@
         .footer-bottom {
             border-top: 1px solid var(--border);
             padding-top: 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
+            text-align: center;
             color: var(--text-secondary);
-            font-size: 0.9rem;
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        .package-card {
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        /* Toast Notification */
+        /* Toast */
         .toast {
             position: fixed;
             bottom: 2rem;
@@ -675,78 +580,40 @@
             padding: 1rem 2rem;
             border-radius: 0.5rem;
             font-weight: 600;
-            animation: slideInUp 0.3s ease-out;
-            z-index: 2000;
-            max-width: 300px;
+            z-index: 3000;
+            animation: slideIn 0.3s ease-out;
         }
 
-        /* Responsive */
+        @keyframes slideIn {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
         @media (max-width: 768px) {
-            nav .nav-links {
-                display: none;
-            }
-
-            .btn-book {
-                display: block;
-            }
-
             .hero h1 {
                 font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .search-bar {
-                flex-direction: column;
             }
 
             .packages-grid {
                 grid-template-columns: 1fr;
             }
 
-            .cta-form {
-                flex-direction: column;
+            .package-meta {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .cta-form input,
-            .cta-form button {
-                width: 100%;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-
-        @media (min-width: 769px) {
             nav .nav-links {
-                display: flex;
-            }
-
-            .menu-toggle {
                 display: none;
             }
 
-            nav .menu {
-                position: static !important;
-                flex-direction: row;
-                width: auto;
-                gap: 2rem;
-                border: none;
-                background: none;
-            }
-
-            nav .menu a {
-                padding: 0;
-                border: none;
-                color: var(--text-secondary);
-            }
-
-            .btn-book {
-                display: block;
+            .search-bar {
+                flex-direction: column;
             }
         }
     </style>
@@ -755,7 +622,7 @@
     <!-- Navigation -->
     <nav>
         <div class="container">
-            <a href="#" class="logo">
+            <a href="#" class="logo" onclick="location.reload()">
                 <div class="logo-img">
                     <i class="fas fa-globe"></i>
                 </div>
@@ -764,33 +631,19 @@
             
             <div class="nav-links">
                 <a href="#packages">Packages</a>
-                <a href="#categories">Categories</a>
                 <a href="#contact">Contact</a>
             </div>
 
-            <div class="nav-buttons">
-                <button class="btn-book" onclick="bookNow()">Book Now</button>
-                <button class="menu-toggle" id="menuToggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </div>
-
-        <div class="menu" id="navMenu">
-            <a href="#packages">Packages</a>
-            <a href="#categories">Categories</a>
-            <a href="#contact">Contact</a>
+            <button class="btn-book" onclick="bookNow()">+91 9876543210</button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Explore Your <span>Next Adventure</span></h1>
-                <p>Discover curated travel packages to the world's most breathtaking destinations. Start your journey today.</p>
+                <h1>Explore Your Next Adventure</h1>
+                <p>Discover curated travel packages to the world's most breathtaking destinations.</p>
                 
                 <div class="search-bar">
                     <input 
@@ -805,50 +658,76 @@
     </section>
 
     <!-- Categories -->
-    <div id="categories" class="categories">
+    <div class="categories">
         <button class="category-btn active" onclick="filterByCategory(event, 'all')">All</button>
         <button class="category-btn" onclick="filterByCategory(event, 'beach')">🏖️ Beach</button>
         <button class="category-btn" onclick="filterByCategory(event, 'mountain')">⛰️ Mountain</button>
         <button class="category-btn" onclick="filterByCategory(event, 'city')">🏙️ City</button>
     </div>
 
-    <!-- Packages Section -->
-    <section class="packages">
+    <!-- Packages -->
+    <section class="packages" id="packages">
         <h2>Featured Packages</h2>
-        <div class="packages-grid" id="packagesGrid">
-            <!-- Packages will be dynamically loaded here -->
-        </div>
+        <div class="packages-grid" id="packagesGrid"></div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="stat-item">
-            <h3>500+</h3>
-            <p>Destinations</p>
-        </div>
-        <div class="stat-item">
-            <h3>50K+</h3>
-            <p>Happy Travelers</p>
-        </div>
-        <div class="stat-item">
-            <h3>4.8★</h3>
-            <p>Average Rating</p>
-        </div>
-        <div class="stat-item">
-            <h3>24/7</h3>
-            <p>Customer Support</p>
-        </div>
-    </section>
+    <!-- Package Detail Modal -->
+    <div class="modal" id="packageModal">
+        <div class="modal-content">
+            <div class="modal-header" id="modalImage">
+                <button class="close-btn" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h1 class="package-title" id="modalTitle"></h1>
 
-    <!-- CTA Section -->
-    <section class="cta" id="contact">
-        <h2>Need Help Planning Your Trip?</h2>
-        <p>Our travel experts are ready to customize the perfect itinerary for you. Get in touch today!</p>
-        <form class="cta-form" onsubmit="handleCTA(event)">
-            <input type="email" placeholder="Enter your email" required>
-            <button type="submit">Get Consultation</button>
-        </form>
-    </section>
+                <div class="package-meta">
+                    <div class="meta-item">
+                        <div class="value" id="modalPrice"></div>
+                        <div class="label">Price Per Person</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="value" id="modalNights"></div>
+                        <div class="label">Nights</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="value" id="modalDestination"></div>
+                        <div class="label">Destination</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="value" id="modalRating"></div>
+                        <div class="label">Rating</div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Overview</h3>
+                    <div class="section-content" id="modalOverview"></div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Highlights</h3>
+                    <div class="highlights-list" id="modalHighlights"></div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Itinerary</h3>
+                    <div id="modalItinerary"></div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Package Includes</h3>
+                    <div class="highlights-list" id="modalIncludes"></div>
+                </div>
+
+                <div class="cta-buttons">
+                    <button class="btn-book-now" onclick="bookPackage()">Book Now</button>
+                    <button class="btn-inquire" onclick="inquirePackage()">Inquire Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -856,47 +735,38 @@
             <div class="footer-grid">
                 <div class="footer-section">
                     <h4>Company</h4>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
+                    <a href="#">About Us</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Blog</a>
                 </div>
                 <div class="footer-section">
                     <h4>Support</h4>
-                    <ul>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">FAQs</a></li>
-                    </ul>
+                    <a href="#">Help Center</a>
+                    <a href="#">Contact</a>
+                    <a href="#">FAQs</a>
                 </div>
                 <div class="footer-section">
                     <h4>Legal</h4>
-                    <ul>
-                        <li><a href="#">Privacy</a></li>
-                        <li><a href="#">Terms</a></li>
-                        <li><a href="#">Cookies</a></li>
-                    </ul>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Cookies</a>
                 </div>
                 <div class="footer-section">
                     <h4>Follow</h4>
-                    <ul>
-                        <li><a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
-                        <li><a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
-                        <li><a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
-                    </ul>
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
                 </div>
             </div>
 
             <div class="footer-bottom">
                 <p>&copy; 2024 Wanderlust Travels. All rights reserved.</p>
-                <p>Crafted with <i class="fas fa-heart" style="color: #ef4444;"></i> for travel enthusiasts worldwide</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Package Data with Real Images from Unsplash
+        // Complete Package Data with Details
         const packages = [
             {
                 id: 1,
@@ -907,7 +777,17 @@
                 category: 'beach',
                 rating: 4.8,
                 reviews: 320,
-                image: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=500&h=400&fit=crop'
+                image: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&h=600&fit=crop',
+                overview: 'Discover the magical island of Bali with its pristine beaches, ancient temples, and vibrant culture. Experience the perfect blend of relaxation and adventure.',
+                highlights: ['Bali Temples', 'Beach Resorts', 'Rice Terraces', 'Water Sports', 'Spa & Wellness', 'Local Culture'],
+                itinerary: [
+                    { day: 1, title: 'Arrival in Bali', description: 'Arrive at Denpasar Airport, transfer to hotel, relax and acclimatize.' },
+                    { day: 2, title: 'Temple Tour', description: 'Visit Tanah Lot and Ubud Palace, experience local culture and traditions.' },
+                    { day: 3, title: 'Beach Day', description: 'Enjoy water sports at Seminyak Beach, sunset dinner by the sea.' },
+                    { day: 4, title: 'Adventure', description: 'Mount Batur sunrise trek and hot springs visit.' },
+                    { day: 5, title: 'Departure', description: 'Spa & wellness session, transfer to airport.' }
+                ],
+                includes: ['Hotel Accommodation', 'Daily Breakfast', 'Airport Transfers', 'Guided Tours', 'Travel Insurance', 'Meals & Activities']
             },
             {
                 id: 2,
@@ -918,7 +798,18 @@
                 category: 'city',
                 rating: 4.9,
                 reviews: 280,
-                image: 'https://images.unsplash.com/photo-1540959375944-7049f642e9f1?w=500&h=400&fit=crop'
+                image: 'https://images.unsplash.com/photo-1540959375944-7049f642e9f1?w=800&h=600&fit=crop',
+                overview: 'Experience the vibrant energy of Tokyo, where ancient traditions meet cutting-edge technology. From neon-lit streets to serene temples.',
+                highlights: ['Shibuya Crossing', 'Senso-ji Temple', 'Tokyo Tower', 'Tsukiji Market', 'Karaoke', 'Anime District'],
+                itinerary: [
+                    { day: 1, title: 'Tokyo Arrival', description: 'Arrive at Narita Airport, check-in to hotel in Shinjuku.' },
+                    { day: 2, title: 'Central Tokyo', description: 'Explore Shibuya, Shinjuku, and Ginza districts.' },
+                    { day: 3, title: 'Cultural Tour', description: 'Visit Senso-ji Temple, Meiji Shrine, and traditional gardens.' },
+                    { day: 4, title: 'Modern Tokyo', description: 'Tokyo Tower, shopping at Takeshita Street.' },
+                    { day: 5, title: 'Day Trip', description: 'Visit Mount Fuji or Nikki National Park.' },
+                    { day: 6, title: 'Departure', description: 'Last-minute shopping, transfer to airport.' }
+                ],
+                includes: ['Hotel Stay', 'JR Pass', 'Guided Tours', 'Meals', 'Entry Fees', 'Transport']
             },
             {
                 id: 3,
@@ -929,7 +820,19 @@
                 category: 'mountain',
                 rating: 4.7,
                 reviews: 415,
-                image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=400&fit=crop'
+                image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop',
+                overview: 'Adventure awaits in the Swiss Alps. Experience breathtaking mountain scenery, thrilling outdoor activities, and charming alpine villages.',
+                highlights: ['Interlaken', 'Jungfrau Mountain', 'Hiking Trails', 'Paragliding', 'Swiss Cuisine', 'Mountain Railways'],
+                itinerary: [
+                    { day: 1, title: 'Arrive in Interlaken', description: 'Settle into mountain resort, orientation tour.' },
+                    { day: 2, title: 'Jungfrau Trek', description: 'Cable car to Jungfrau, explore snowy peaks.' },
+                    { day: 3, title: 'Adventure Sports', description: 'Paragliding or skydiving experience.' },
+                    { day: 4, title: 'Hiking Day', description: 'Guided hiking through Alpine meadows.' },
+                    { day: 5, title: 'Mountain Train', description: 'Scenic train ride through mountain passes.' },
+                    { day: 6, title: 'Relaxation', description: 'Spa treatments, local cheese fondue dinner.' },
+                    { day: 7, title: 'Departure', description: 'Transfer to airport.' }
+                ],
+                includes: ['Mountain Resort', 'All Activities', 'Meals', 'Equipment', 'Guides', 'Insurance']
             },
             {
                 id: 4,
@@ -940,7 +843,16 @@
                 category: 'city',
                 rating: 4.9,
                 reviews: 567,
-                image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=500&h=400&fit=crop'
+                image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&h=600&fit=crop',
+                overview: 'Fall in love with the City of Light. Romantic walks along the Seine, world-class museums, and exquisite French cuisine await.',
+                highlights: ['Eiffel Tower', 'Louvre Museum', 'Arc de Triomphe', 'Seine Cruise', 'Michelin Dining', 'Montmartre'],
+                itinerary: [
+                    { day: 1, title: 'Paris Arrival', description: 'Welcome to Paris, settle in hotel.' },
+                    { day: 2, title: 'Iconic Sites', description: 'Eiffel Tower, Champs-Élysées, Arc de Triomphe.' },
+                    { day: 3, title: 'Museums & Culture', description: 'Louvre, Musée d\'Orsay, Notre-Dame.' },
+                    { day: 4, title: 'Romantic Paris', description: 'Seine River cruise, Montmartre, farewell dinner.' }
+                ],
+                includes: ['Hotel Stay', 'Museum Passes', 'Seine Cruise', 'Meals', 'Transport', 'Guides']
             },
             {
                 id: 5,
@@ -951,7 +863,17 @@
                 category: 'beach',
                 rating: 4.6,
                 reviews: 292,
-                image: 'https://images.unsplash.com/photo-1522644514-116fdf86fa40?w=500&h=400&fit=crop'
+                image: 'https://images.unsplash.com/photo-1522644514-116fdf86fa40?w=800&h=600&fit=crop',
+                overview: 'Relax on pristine beaches, explore coral reefs, and indulge in Thai hospitality. Phuket offers the perfect tropical getaway.',
+                highlights: ['Patong Beach', 'Island Hopping', 'Snorkeling', 'Thai Massage', 'Night Markets', 'Temples'],
+                itinerary: [
+                    { day: 1, title: 'Beach Arrival', description: 'Check-in to beachfront resort, settle in.' },
+                    { day: 2, title: 'Island Adventure', description: 'Boat tour to nearby islands, snorkeling.' },
+                    { day: 3, title: 'Beach Relaxation', description: 'Spa day, beach sunset, Thai dinner.' },
+                    { day: 4, title: 'Local Culture', description: 'Temple visit, night bazaar, local cuisine.' },
+                    { day: 5, title: 'Departure', description: 'Last beach time, transfer to airport.' }
+                ],
+                includes: ['Resort Stay', 'Meals', 'Island Tours', 'Spa', 'Transport', 'Activities']
             },
             {
                 id: 6,
@@ -962,7 +884,17 @@
                 category: 'city',
                 rating: 4.8,
                 reviews: 401,
-                image: 'https://images.unsplash.com/photo-1512453314636-ef33a7a1a5f9?w=500&h=400&fit=crop'
+                image: 'https://images.unsplash.com/photo-1512453314636-ef33a7a1a5f9?w=800&h=600&fit=crop',
+                overview: 'Experience ultra-modern luxury in Dubai. Iconic skyscrapers, world-class shopping, and desert adventures combine for an unforgettable stay.',
+                highlights: ['Burj Khalifa', 'Dubai Mall', 'Desert Safari', 'Palm Jumeirah', 'Gold Souk', 'Luxury Dining'],
+                itinerary: [
+                    { day: 1, title: 'Dubai Welcome', description: 'Luxury hotel check-in, city orientation.' },
+                    { day: 2, title: 'Modern Dubai', description: 'Burj Khalifa, Dubai Mall, shopping.' },
+                    { day: 3, title: 'Desert Adventure', description: 'Desert safari, dune bashing, camel ride.' },
+                    { day: 4, title: 'Beach & Water', description: 'Palm Jumeirah, water sports, yacht dinner.' },
+                    { day: 5, title: 'Departure', description: 'Spa, last shopping, airport transfer.' }
+                ],
+                includes: ['Luxury Hotel', 'All Meals', 'Safari Tour', 'Water Activities', 'Shopping', 'Transport']
             },
             {
                 id: 7,
@@ -973,7 +905,17 @@
                 category: 'mountain',
                 rating: 4.7,
                 reviews: 189,
-                image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=400&fit=crop'
+                image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop',
+                overview: 'Escape to the serene Himalayas. Mountain treks, adventure sports, and spiritual peace await in this stunning hill station.',
+                highlights: ['Mountain Treks', 'Adventure Sports', 'Spiritual Temples', 'Rohtang Pass', 'Local Culture', 'Natural Beauty'],
+                itinerary: [
+                    { day: 1, title: 'Manali Arrival', description: 'Arrive in mountain town, rest and acclimatize.' },
+                    { day: 2, title: 'Mountain Trek', description: 'Guided hiking through mountain trails.' },
+                    { day: 3, title: 'Adventure Day', description: 'Paragliding or mountain biking.' },
+                    { day: 4, title: 'Cultural Tour', description: 'Temple visits, local village exploration.' },
+                    { day: 5, title: 'Relaxation', description: 'Spa, scenic walks, departure.' }
+                ],
+                includes: ['Mountain Hotel', 'Meals', 'Guides', 'Equipment', 'Transport', 'Activities']
             },
             {
                 id: 8,
@@ -984,109 +926,44 @@
                 category: 'beach',
                 rating: 4.9,
                 reviews: 598,
-                image: 'https://images.unsplash.com/photo-1551244221-5d1d3f34daf8?w=500&h=400&fit=crop'
-            },
-            {
-                id: 9,
-                name: 'Barcelona City Break',
-                destination: 'Barcelona, Spain',
-                price: 52999,
-                nights: 4,
-                category: 'city',
-                rating: 4.8,
-                reviews: 423,
-                image: 'https://images.unsplash.com/photo-1583422409516-2895a77f3df8?w=500&h=400&fit=crop'
-            },
-            {
-                id: 10,
-                name: 'Iceland Adventure',
-                destination: 'Reykjavik, Iceland',
-                price: 78999,
-                nights: 6,
-                category: 'mountain',
-                rating: 4.9,
-                reviews: 356,
-                image: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=500&h=400&fit=crop'
-            },
-            {
-                id: 11,
-                name: 'Bora Bora Paradise',
-                destination: 'Bora Bora, French Polynesia',
-                price: 95999,
-                nights: 7,
-                category: 'beach',
-                rating: 4.9,
-                reviews: 289,
-                image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=500&h=400&fit=crop'
-            },
-            {
-                id: 12,
-                name: 'New York Expedition',
-                destination: 'New York, USA',
-                price: 62999,
-                nights: 5,
-                category: 'city',
-                rating: 4.7,
-                reviews: 512,
-                image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=500&h=400&fit=crop'
+                image: 'https://images.unsplash.com/photo-1551244221-5d1d3f34daf8?w=800&h=600&fit=crop',
+                overview: 'Your perfect honeymoon destination. Crystal-clear waters, overwater bungalows, and ultimate romance in paradise.',
+                highlights: ['Overwater Bungalows', 'Snorkeling', 'Diving', 'Sunset Dinner', 'Spa & Wellness', 'Water Activities'],
+                itinerary: [
+                    { day: 1, title: 'Paradise Arrival', description: 'Seaplane transfer to luxury resort.' },
+                    { day: 2, title: 'Snorkeling Day', description: 'Explore coral reefs and marine life.' },
+                    { day: 3, title: 'Diving Adventure', description: 'Scuba diving in pristine waters.' },
+                    { day: 4, title: 'Romantic Escape', description: 'Private beach dinner, couple\'s massage.' },
+                    { day: 5, title: 'Island Hopping', description: 'Visit local islands and fishing villages.' },
+                    { day: 6, title: 'Departure', description: 'Final moments of paradise, departure.' }
+                ],
+                includes: ['Luxury Resort', 'All Meals', 'Water Sports', 'Spa', 'Seaplane', 'Guides', 'Activities']
             }
         ];
 
         let currentCategory = 'all';
         let searchTerm = '';
-        let wishlist = new Set();
+        let currentPackage = null;
 
-        // Initialize
         function init() {
             renderPackages();
             setupEventListeners();
-            loadWishlist();
         }
 
-        // Setup Event Listeners
         function setupEventListeners() {
-            // Search
             document.getElementById('searchInput').addEventListener('input', (e) => {
                 searchTerm = e.target.value.toLowerCase();
                 renderPackages();
             });
-
-            // Navigation
-            document.getElementById('menuToggle').addEventListener('click', function() {
-                this.classList.toggle('active');
-                document.getElementById('navMenu').classList.toggle('active');
-            });
-
-            // Navbar scroll effect
-            window.addEventListener('scroll', () => {
-                const nav = document.querySelector('nav');
-                if (window.scrollY > 50) {
-                    nav.classList.add('scrolled');
-                } else {
-                    nav.classList.remove('scrolled');
-                }
-            });
-
-            // Close menu on link click
-            document.querySelectorAll('#navMenu a').forEach(link => {
-                link.addEventListener('click', () => {
-                    document.getElementById('menuToggle').classList.remove('active');
-                    document.getElementById('navMenu').classList.remove('active');
-                });
-            });
         }
 
-        // Filter by Category
         function filterByCategory(event, category) {
             currentCategory = category;
-            document.querySelectorAll('.category-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
+            document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
             renderPackages();
         }
 
-        // Filter Packages
         function getFilteredPackages() {
             return packages.filter(pkg => {
                 const matchesCategory = currentCategory === 'all' || pkg.category === currentCategory;
@@ -1096,22 +973,15 @@
             });
         }
 
-        // Render Packages
         function renderPackages() {
             const filtered = getFilteredPackages();
             const grid = document.getElementById('packagesGrid');
             
-            if (filtered.length === 0) {
-                grid.innerHTML = '<div class="no-packages">No packages found matching your criteria.</div>';
-                return;
-            }
-
             grid.innerHTML = filtered.map(pkg => `
-                <div class="package-card">
+                <div class="package-card" onclick="openModal(${pkg.id})">
                     <div class="package-image" style="background-image: url('${pkg.image}');">
-                        <button class="wishlist-btn ${wishlist.has(pkg.id) ? 'active' : ''}" 
-                                onclick="toggleWishlist(${pkg.id})">
-                            ${wishlist.has(pkg.id) ? '❤️' : '🤍'}
+                        <button class="wishlist-btn" onclick="event.stopPropagation(); toggleWishlist(${pkg.id})">
+                            🤍
                         </button>
                         <div class="rating-badge">⭐ ${pkg.rating} (${pkg.reviews})</div>
                     </div>
@@ -1122,68 +992,82 @@
                             <span>🌙 ${pkg.nights} nights</span>
                             <span>💰 ₹${pkg.price.toLocaleString()}</span>
                         </div>
-                        <button class="package-btn" onclick="bookPackage(${pkg.id})">Book Package →</button>
+                        <button class="package-btn" onclick="event.stopPropagation()">View Details →</button>
                     </div>
                 </div>
             `).join('');
         }
 
-        // Toggle Wishlist
-        function toggleWishlist(id) {
-            if (wishlist.has(id)) {
-                wishlist.delete(id);
-            } else {
-                wishlist.add(id);
-                showToast('Added to wishlist! 🎉');
-            }
-            saveWishlist();
-            renderPackages();
+        function openModal(packageId) {
+            currentPackage = packages.find(p => p.id === packageId);
+            const modal = document.getElementById('packageModal');
+
+            document.getElementById('modalImage').style.backgroundImage = `url('${currentPackage.image}')`;
+            document.getElementById('modalTitle').textContent = currentPackage.name;
+            document.getElementById('modalPrice').textContent = `₹${currentPackage.price.toLocaleString()}`;
+            document.getElementById('modalNights').textContent = `${currentPackage.nights}`;
+            document.getElementById('modalDestination').textContent = currentPackage.destination;
+            document.getElementById('modalRating').textContent = `${currentPackage.rating}★`;
+            document.getElementById('modalOverview').textContent = currentPackage.overview;
+
+            document.getElementById('modalHighlights').innerHTML = currentPackage.highlights
+                .map(h => `<div class="highlight-item"><strong>${h}</strong></div>`)
+                .join('');
+
+            document.getElementById('modalItinerary').innerHTML = currentPackage.itinerary
+                .map(d => `
+                    <div class="itinerary-day">
+                        <strong>Day ${d.day}: ${d.title}</strong>
+                        ${d.description}
+                    </div>
+                `)
+                .join('');
+
+            document.getElementById('modalIncludes').innerHTML = currentPackage.includes
+                .map(inc => `<div class="highlight-item"><i class="fas fa-check" style="color: var(--primary); margin-right: 0.5rem;"></i>${inc}</div>`)
+                .join('');
+
+            modal.classList.add('active');
         }
 
-        // Save/Load Wishlist
-        function saveWishlist() {
-            localStorage.setItem('wanderlust_wishlist', JSON.stringify([...wishlist]));
+        function closeModal() {
+            document.getElementById('packageModal').classList.remove('active');
         }
 
-        function loadWishlist() {
-            const saved = localStorage.getItem('wanderlust_wishlist');
-            if (saved) {
-                wishlist = new Set(JSON.parse(saved));
-            }
+        function bookPackage() {
+            showToast(`Booking ${currentPackage.name}! Redirecting to payment...`);
+            setTimeout(() => closeModal(), 1500);
         }
 
-        // Book Package
-        function bookPackage(id) {
-            const pkg = packages.find(p => p.id === id);
-            showToast(`Booking ${pkg.name}! Check your email.`);
+        function inquirePackage() {
+            showToast(`Inquiry sent for ${currentPackage.name}! We'll contact you soon.`);
+            setTimeout(() => closeModal(), 1500);
         }
 
-        // Book Now Button
         function bookNow() {
-            showToast('Booking feature coming soon!');
+            showToast('Call us at +91 9876543210');
         }
 
-        // Handle CTA Form
-        function handleCTA(e) {
-            e.preventDefault();
-            const email = e.target.querySelector('input').value;
-            showToast(`Consultation request sent to ${email}!`);
-            e.target.reset();
+        function toggleWishlist(id) {
+            showToast('Added to wishlist! ❤️');
         }
 
-        // Show Toast Notification
         function showToast(message) {
             const toast = document.createElement('div');
             toast.className = 'toast';
             toast.textContent = message;
             document.body.appendChild(toast);
             
-            setTimeout(() => {
-                toast.remove();
-            }, 3000);
+            setTimeout(() => toast.remove(), 3000);
         }
 
-        // Start the app
+        window.onclick = function(event) {
+            const modal = document.getElementById('packageModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
         init();
     </script>
 </body>
